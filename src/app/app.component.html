@@ -1,0 +1,50 @@
+<div class="todo">
+  <app-header></app-header>
+  <main class="content">
+    <div #inicio>
+      <app-inicio></app-inicio>
+    </div>
+    <div #about>
+      <app-about></app-about>
+    </div>
+
+    <div #skill>
+      <app-skill></app-skill>
+    </div>
+
+    <div #qualification>
+      <app-qualification></app-qualification>
+    </div>
+
+    <button class="top" (click)="onClick(inicio)" [ngClass]="{ visible: reachedTheEnd, hidden: !reachedTheEnd }">
+      <svg>
+        <use href="./assets/icons/icon.svg#icon-chevron-with-circle-up"></use>
+      </svg>
+    </button>
+    <app-footer></app-footer>
+  </main>
+  
+</div>
+
+
+<div class="containerColores" [ngClass]="{ mostrarBotonColor: reachedTheEnd2, ocultarBotonColor: !reachedTheEnd2 }">
+  <div class="list">
+    <button [ngClass]="{ shake: collapsed, reset: init && !collapsed }" (click)="toggle(menu)"
+      [disabled]="botonColores">
+      <span [ngClass]="{ rotate: collapsed, reset: init && !collapsed }">+</span>
+    </button>
+    <div class="menu" #menu>
+      <span (click)="colorPurple()" class="colorPurple"></span>
+      <span (click)="colorGreen()" class="colorGreen"></span>
+      <span (click)="colorPink()" class="colorPink"></span>
+
+    </div>
+  </div>
+  <svg>
+    <filter id="goo">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="10" />
+      <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7" />
+      <feBlend in="SourceGraphic" in2="goo" />
+    </filter>
+  </svg>
+</div>
